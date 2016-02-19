@@ -81,6 +81,14 @@ that people do it all the time without even realising it. What is missing
 is definitive guide on how it should be used in a real world project or a good
 software architect supervising it.
 
+## Dojo 2
+
+In recent years Dojo started falling behind the frantically developing
+JavaScript world pending a full rewrite in form of [Dojo 2][dojo2]. I had a
+pleasure to use some of the new modules ([`dstore`][dstore] and
+[`dgrid`][dgrid]) in their infancy and I sincerely hope that the rewrite will
+give Dojo an entirely new life.
+
 ## Dojo's structure
 
 Dojo is split into 3 official modules:
@@ -114,13 +122,6 @@ DotA taught me enough about the genre (well, there wasn't any genre yet when i
 played it the most) to immediately jump into mid-to-high level LoL/HotS games
 just as Dojo taught me enough about JavaScript internals to easily grasp
 Angular concepts.
-
-## Dojo 2
-
-In recent years it started falling behind the frantically developing JavaScript
-world pending a full rewrite in form of [Dojo 2][dojo2]. I had a pleasure to use
-some of the new modules ([`dstore`][dstore] and [`dgrid`][dgrid]) in their
-infancy and I sincerely hope that the rewrite will give it entirely new life.
 
 
 # Why React?
