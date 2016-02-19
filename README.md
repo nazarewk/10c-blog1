@@ -154,7 +154,7 @@ using Babel serving it with `gulp-serve`, that's all the setup i needed.
 - personally i did not figure out how to circumvent automatic inclusion of
     `'use strict';` in Babel for just the Dojo files, so i stick to the ES5,
 
-## `index.html`
+## [`index.html`](http://nazarewk.github.io/10c-blog1/demo/index.html)
 
 Dumbed down version of `index.html`:
 
@@ -216,7 +216,7 @@ Obviously the former is easier to use
 </html>
 ```
 
-## The entry point
+## The entry point ([`main.jsx`](http://nazarewk.github.io/10c-blog1/demo/app/main.jsx))
 
 ```javascript
 define([
@@ -247,7 +247,7 @@ define([
 
 Yeah, creating custom Dijit widget **is** cumbersome.
 
-### `EntryList.js`
+### [`EntryList.js`](http://nazarewk.github.io/10c-blog1/demo/app/dijit/EntryList.js)
 
 ```javascript
 define([
@@ -285,9 +285,9 @@ define([
       var files = '\
         <h2>Files list:</h2>\
         <ul> \
-          <li><a href="app/main.jsx" target="_blank">app/main.jsx</a></li> \
-          <li><a href="app/dijit/Entry.js" target="_blank">app/dijit/Entry.js</a></li> \
-          <li><a href="app/dijit/EntryList.js" target="_blank">app/dijit/EntryList.js</a></li> \
+          <li><a href="app/main.jsx">app/main.jsx</a></li> \
+          <li><a href="app/dijit/Entry.js">app/dijit/Entry.js</a></li> \
+          <li><a href="app/dijit/EntryList.js">app/dijit/EntryList.js</a></li> \
         </ul>';
       domConstruct.place(
         domConstruct.toDom(files), // contruct DOM from text
@@ -318,7 +318,7 @@ define([
 });
 ```
 
-### `Entry.js`
+### [`Entry.js`](http://nazarewk.github.io/10c-blog1/demo/app/dijit/Entry.js)
 
 ```javascript
 define([
@@ -351,7 +351,7 @@ define([
 });
 ```
 
-## React code
+## [`ReactEntry.jsx`](http://nazarewk.github.io/10c-blog1/demo/app/ReactEntryList.jsx)
 Yeah exactly, this's all there is:
 
 ```javascript
@@ -373,8 +373,8 @@ define([], () => {
       </ul>
       <h2>Files list:</h2>
       <ul>
-        <li><a href="app/main.jsx" target="_blank">app/main.jsx</a></li>
-        <li><a href="app/ReactEntryList.jsx" target="_blank">app/ReactEntryList.jsx</a></li>
+        <li><a href="app/main.jsx">app/main.jsx</a></li>
+        <li><a href="app/ReactEntryList.jsx">app/ReactEntryList.jsx</a></li>
       </ul>
     </div>
   );
