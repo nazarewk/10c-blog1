@@ -7,7 +7,7 @@ discussion about it. This article will be no different.
 
 Right now I simply don't have enough knowledge about React and forgot too much
 about Dojo to make it objective analysis of the problem. The objective part
-will come later, after i have used it in a real project.
+will come later, after i have tested it in a side project.
 
 ## What is the purpose of this article?
 
