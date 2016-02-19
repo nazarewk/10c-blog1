@@ -16,9 +16,9 @@ with/instead of Dijit to make Dojo more accessible to the general public.
 
 Well... the day finally came to put the idea into action.
 
-I have no experience whatsoever with React or modern (2015+) web development
-ideas so today I will stick to explaining pros & cons of Dojo as I know it,
-why would I even want to do such thing as mixing it with React
+I have no experience whatsoever with React or modern (2015+) frontend
+development ideas so today I will stick to explaining pros & cons of Dojo
+as I know it, why would I even want to do such thing as mixing it with React
 and finally share my proof of concept.
 
 I am planning to follow up with my own implementation of [Today I Learned][TIL]
