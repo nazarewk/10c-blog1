@@ -3,7 +3,7 @@
 ![*Yeah, well, that's just like your opinon, man.*](http://www.teslamotorsclub.com/attachment.php?attachmentid=47346&d=1397707694)
 
 I love expressing my opinion about everything and then having a healthy
-discussion about it, this article will be no different.
+discussion about it. This article will be no different.
 
 Right now I simply don't have enough knowledge about React and forgot too much
 about Dojo to make it objective analysis of the problem.
@@ -26,11 +26,12 @@ idea and share my experiences in future articles.
 
 So far I have managed to make an in-browser [`.jsx` loader][dojo-jsx] for Dojo,
 sadly I came to conclusion it is not very useful outside development.
-You can check the progress [here][tilapp], I abandoned the idea of using above
-mentioned loader for [Jetbrains's Babel File Watcher][jetbrains-babel] as it
-is way less obtrusive and simpler to set up that any other JSX transpiler.
+You can check the application’s progress [here][tilapp],
+I abandoned the idea of using above mentioned loader for
+[Jetbrains's Babel File Watcher][jetbrains-babel] as it is way less obtrusive
+and simpler to set up that any other JSX transpiler.
 
-## Who am i?
+## Who am I?
 
 Currently I am a full stack developer at 10Clouds slowly changing into strictly
 Python developer since nobody wants to use my beloved Dojo. Hopefully this
@@ -38,9 +39,9 @@ Python developer since nobody wants to use my beloved Dojo. Hopefully this
 
 I had a pleasure (or misery) of learning Dojo as my first JavaScript library.
 I used it in a side project for almost a year and I definitely liked what i
-found. However it was not a land flowing with milk an honey - it has very high
-learning curve. It is simply not possible to make a quick start guide for it,
-took me 2 weeks to even begin writing my Single Page Application.
+found. However it was not a land flowing with milk and honey - it has very
+steep learning curve. It is simply not possible to make a quick start guide
+for it. It took me 2 weeks to even begin writing my Single Page Application.
 
 In retrospective I think the vast knowledge of ES5 standard I obtained using
 Dojo was well worth the effort.
