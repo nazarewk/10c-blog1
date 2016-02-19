@@ -6,30 +6,26 @@ I love expressing my opinion about everything and then having a healthy
 discussion about it. This article will be no different.
 
 Right now I simply don't have enough knowledge about React and forgot too much
-about Dojo to make it objective analysis of the problem.
+about Dojo to make it objective analysis of the problem. The objective part
+will come later, after i have used it in a real project.
 
 ## What is the purpose of this article?
 
 At some point I learned that [React][react] is just the View part of MVC and
-should not obstruct with the M & C. I toyed with the idea of using it
-with/instead of Dijit to make Dojo more accessible to the general public.
+should not obstruct with the Models & Controllers. I toyed with the idea of
+using it with/instead of Dijit (Dojo's View layer) to make Dojo more
+accessible to the general public.
 
 Well... the day finally came to put the idea into action.
 
 I have no experience whatsoever with React or modern (2015+) frontend
-development ideas so today I will stick to explaining pros & cons of Dojo
-as I know it, why would I even want to do such thing as mixing it with React
-and finally share my proof of concept.
+development ideas. Things got out of hand very fast so today I will stick to
+explaining pros & cons of Dojo as I know it, why would I even want to do such
+thing as mixing it with React and finally share my proof of concept.
 
 I am planning to follow up with my own implementation of [Today I Learned][TIL]
 idea and share my experiences in future articles.
-
-So far I have managed to make an in-browser [`.jsx` loader][dojo-jsx] for Dojo,
-sadly I came to conclusion it is not very useful outside development.
-You can check the application’s progress [here][tilapp],
-I abandoned the idea of using above mentioned loader for
-[Jetbrains's Babel File Watcher][jetbrains-babel] as it is way less obtrusive
-and simpler to set up that any other JSX transpiler.
+You can check the application’s progress [here][tilapp].
 
 ## Who am I?
 
@@ -52,8 +48,8 @@ Dojo was well worth the effort.
 You may or may not have heard about it before. It is one of the
 [oldest][dojo-history] JavaScript libraries out there and a pioneer of
 the JavaScript itself as we know it today. It might be getting old and
-is notoriously hard to get started with, but I still think it is one of the best
-written and the most complete JavaScript libraries there are.
+is notoriously hard to get started with, but I still think it is one of the
+best written and the most complete JavaScript libraries there are.
 
 ## Library, not a framework
 
@@ -78,8 +74,8 @@ I also know of 3 *future* modules which will be incorporated into Dojo 2
 release:
 - [`dstore`][dstore] - replaces `dojo/store`,
     the Data Storage implementation of Dojo,
-- [`dmodel`][dmodel] - originally part of `dstore`,
-    the Data Modelling part of Dojo,
+- [`dmodel`][dmodel] - specifically Data Modelling tool extracted from
+    `dstore`,
 - [`dgrid`][dgrid] - Dojo's grid implementation, call it whatever you want:
     I absolutely love it for displaying tabular data/extending it with whatever
     feature I might dream of,
@@ -99,15 +95,20 @@ still nobody tells you how they fit together. Figuring it out by yourself is the
 hardest and most disgusting part of Dojo.
 
 ## Random games comparisons
-Dojo is to Angular what:
-- [Defense of the Ancients][dota] is to [League of Legends][lol],
-- Counter Strike is to Quake/Team Fortress 2,
-- Call of Duty/Battlefield to Quake/Team Fortress 2,
-- Starcraft is to Warcraft 3,
 
-Obviously the latter are more fun and easy to work with, but the former give you
-the power, the feeling of hard earned achievement and confidence that once you
-got the hang of it it will *simply work*.
+Using Dojo and Angular feels like playing:
+- [Defense of the Ancients][dota] and [League of Legends][lol]/[Heroes of the Storm][hots],
+- Counter Strike and Quake/Team Fortress,
+- Starcraft and Warcraft,
+
+The latter give significantly more immediate fun, but the former give you the
+feeling of hard earned achievement and confidence that once you got the hang
+of it it will *just work*.
+
+DotA taught me enough about the genre (well, there wasn't any genre when i
+played it the most) to immediately jump into mid-to-high level LoL/HotS games
+just as Dojo taught me enough about JavaScript internals to easily grasp
+Angular concepts.
 
 ## Dojo 2
 
@@ -119,14 +120,14 @@ infancy and I sincerely hope that the rewrite will give it entirely new life.
 
 # Why React?
 
-Some people love Dijit, I am not one of them. While stock implementation is
-a lot closer to Angular in terms of opinionation and ease of use, the Dijit's
-core [`_WidgetBase`][widgetbase] is way more complicated to use than it should
-be. It's kind of like Java: well defined and structured, but requires a lot of
-boilerplate code.
-
 Basically Dijit lacks easy to use templating system while it is React's JSX's
 greatest feature. Simple as that.
+
+Some people love Dijit, I am not one of them. While stock implementation is
+a lot closer to Angular in terms of opinionation and ease of use, the Dijit's
+core [`_WidgetBase`][widgetbase] is way more complicated to customize than it
+should be. It's kind of like Java: well defined and structured, but requires
+a lot of boilerplate code and initial effort.
 
 # Proof of concept
 
@@ -139,17 +140,22 @@ I tried something more ambitious, but my lack of knowledge of React told me
 
 ![You shall not pass!](http://i.stack.imgur.com/2BvbQ.jpg)
 
-So here we are: displaying unordered list of titles and getting the personalized
+So here we are: displaying list of messages and getting the personalized
 `alert()` upon clicking them.
 
-As I mentioned earlier, I used PyCharm's File Watcher to convert `.jsx` to `ES5`
-using Babel serving it with `gulp-serve`, that's all the setup I needed.
+## Development setup
+- PyCharm IDE,
+- [Jetbrains's Babel File Watcher][jetbrains-babel] to transpile `JSX` + `ES6`
+    to `ES5`, it is by far the simplest to set up (as compared to those crazy
+    grunt/gulp/webpack/browserify wombo-combo Starter Kits floating around
+    the Internet nowadays),
+- `gulp-serve` as a simple HTTP server hosting code,
 
 ## Issues and insights worth mentioning
-- [`AMD`][modules] is subset of Dojo's AMD implementation, Dojo had them
-    long before it became standard and has extra loaders that didn't make it
-    into the final standard, so it is kind of like a `square` is a `rectangle`,
-    but not the other way around,
+- [`AMD`][modules] is subset of Dojo's asynchronous modules implementation,
+    Dojo had them long before it became standard and has extra loaders that
+    didn't make it into the final standard. It is kind of like a `square`
+    is a `rectangle`, but not the other way around,
 - Dojo's inheritance model is incompatible with JavaScript strict mode, but
     otherwise should work fine with ES2015 transpilers,
 - personally I did not figure out how to circumvent automatic inclusion of
@@ -412,3 +418,4 @@ Engineer/Bachelor Thesis (whatever is the proper name in English).
 
 [dota]: http://blog.dota2.com/?l=english
 [lol]: http://leagueoflegends.com
+[hots]: http://eu.battle.net/heroes/en/
