@@ -5,44 +5,44 @@
 I love expressing my opinion about everything and then having a healthy
 discussion about it, this article will be no different.
 
-Right now i simply don't have enough knowledge about React and forgot too much
+Right now I simply don't have enough knowledge about React and forgot too much
 about Dojo to make it objective analysis of the problem.
 
 ## What is the purpose of this article?
 
-At some point i learned that [React][react] is just the View part of MVC and
+At some point I learned that [React][react] is just the View part of MVC and
 should not obstruct with the M & C. I toyed with the idea of using it
 with/instead of Dijit to make Dojo more accessible to the general public.
 
 Well... the day finally came to put the idea into action.
 
 I have no experience whatsoever with React or modern (2015+) web development
-ideas so today i will stick to explaining pros & cons of Dojo as i know it,
-why would i even want to do such thing as mixing it with React
+ideas so today I will stick to explaining pros & cons of Dojo as I know it,
+why would I even want to do such thing as mixing it with React
 and finally share my proof of concept.
 
-I am planning to follow up with my own implementation of [Today i Learned][TIL]
+I am planning to follow up with my own implementation of [Today I Learned][TIL]
 idea and share my experiences in future articles.
 
-So far i have managed to make an in-browser [`.jsx` loader][dojo-jsx] for Dojo,
-sadly i came to conclusion it is not very useful outside development.
-You can check the progress [here][tilapp], i abandoned the idea of using above
+So far I have managed to make an in-browser [`.jsx` loader][dojo-jsx] for Dojo,
+sadly I came to conclusion it is not very useful outside development.
+You can check the progress [here][tilapp], I abandoned the idea of using above
 mentioned loader for [Jetbrains's Babel File Watcher][jetbrains-babel] as it
 is way less obtrusive and simpler to set up that any other JSX transpiler.
 
 ## Who am i?
 
-Currently i am a full stack developer at 10Clouds slowly changing into strictly
+Currently I am a full stack developer at 10Clouds slowly changing into strictly
 Python developer since nobody wants to use my beloved Dojo. Hopefully this
 *series* of articles and release of Dojo 2 will change the situation.
 
 I had a pleasure (or misery) of learning Dojo as my first JavaScript library.
-I used it in a side project for almost a year and i definitely liked what i
+I used it in a side project for almost a year and I definitely liked what i
 found. However it was not a land flowing with milk an honey - it has very high
 learning curve. It is simply not possible to make a quick start guide for it,
 took me 2 weeks to even begin writing my Single Page Application.
 
-In retrospective i think the vast knowledge of ES5 standard i obtained using
+In retrospective I think the vast knowledge of ES5 standard I obtained using
 Dojo was well worth the effort.
 
 
@@ -51,7 +51,7 @@ Dojo was well worth the effort.
 You may or may not have heard about it before. It is one of the
 [oldest][dojo-history] JavaScript libraries out there and a pioneer of
 the JavaScript itself as we know it today. It might be getting old and
-is notoriously hard to get started with, but i still think it is one of the best
+is notoriously hard to get started with, but I still think it is one of the best
 written and the most complete JavaScript libraries there are.
 
 ## Library, not a framework
@@ -80,8 +80,8 @@ release:
 - [`dmodel`][dmodel] - originally part of `dstore`,
     the Data Modelling part of Dojo,
 - [`dgrid`][dgrid] - Dojo's grid implementation, call it whatever you want:
-    i absolutely love it for displaying tabular data/extending it with whatever
-    feature i might dream of,
+    I absolutely love it for displaying tabular data/extending it with whatever
+    feature I might dream of,
 
 ## It lets you do whatever you want, however you want...
 
@@ -113,12 +113,12 @@ got the hang of it it will *simply work*.
 In recent years it started falling behind the frantically developing JavaScript
 world pending a full rewrite in form of [Dojo 2][dojo2]. I had a pleasure to use
 some of the new modules ([`dstore`][dstore] and [`dgrid`][dgrid]) in their
-infancy and i sincerely hope that the rewrite will give it entirely new life.
+infancy and I sincerely hope that the rewrite will give it entirely new life.
 
 
 # Why React?
 
-Some people love Dijit, i am not one of them. While stock implementation is
+Some people love Dijit, I am not one of them. While stock implementation is
 a lot closer to Angular in terms of opinionation and ease of use, the Dijit's
 core [`_WidgetBase`][widgetbase] is way more complicated to use than it should
 be. It's kind of like Java: well defined and structured, but requires a lot of
@@ -141,8 +141,8 @@ I tried something more ambitious, but my lack of knowledge of React told me
 So here we are: displaying unordered list of titles and getting the personalized
 `alert()` upon clicking them.
 
-As i mentioned earlier, i used PyCharm's File Watcher to convert `.jsx` to `ES5`
-using Babel serving it with `gulp-serve`, that's all the setup i needed.
+As I mentioned earlier, I used PyCharm's File Watcher to convert `.jsx` to `ES5`
+using Babel serving it with `gulp-serve`, that's all the setup I needed.
 
 ## Issues and insights worth mentioning
 - [`AMD`][modules] is subset of Dojo's AMD implementation, Dojo had them
@@ -151,8 +151,8 @@ using Babel serving it with `gulp-serve`, that's all the setup i needed.
     but not the other way around,
 - Dojo's inheritance model is incompatible with JavaScript strict mode, but
     otherwise should work fine with ES2015 transpilers,
-- personally i did not figure out how to circumvent automatic inclusion of
-    `'use strict';` in Babel for just the Dojo files, so i stick to the ES5,
+- personally I did not figure out how to circumvent automatic inclusion of
+    `'use strict';` in Babel for just the Dojo files, so I stick to the ES5,
 
 ## [`index.html`](http://nazarewk.github.io/10c-blog1/demo/index.html)
 
@@ -298,7 +298,7 @@ define([
     postCreate: function postCreate() {
       // We have to manually create child widgets, then destroy them later
 
-      // It could be located at buildRendering(), but i prefer to build widgets
+      // It could be located at buildRendering(), but I prefer to build widgets
       // in postCreate()
       this.inherited(arguments);
       var that = this;
@@ -383,11 +383,11 @@ define([], () => {
 
 # Conclusions
 
-I am not sure how it will work out in my [Today i Learned app][tilapp], but
+I am not sure how it will work out in my [Today I Learned app][tilapp], but
 for now using React instead of custom Dijit looks very promising in solving
 the problem of Dojo being too complicated for the average mortal.
 
-Hopefully i will keep you posted in the follow-ups and possibly my
+Hopefully I will keep you posted in the follow-ups and possibly my
 Engineer/Bachelor Thesis (whatever is the proper name in English).
 
 
