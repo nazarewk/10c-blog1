@@ -1,5 +1,3 @@
-# Using React instead of Dijit with Dojo Toolkit (part 1)
-
 # Introduction
 
 ![*Yeah, well, that's just like your opinon, man.*](http://www.teslamotorsclub.com/attachment.php?attachmentid=47346&d=1397707694)
