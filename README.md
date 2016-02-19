@@ -132,7 +132,7 @@ greatest feature. Simple as that.
 # Proof of concept
 
 Great, you are still here. So let's get to the proof of concept example.
-You can see the fully working comparison of React vs Dijit [here][example].
+[You can see the fully working comparison of React vs Dijit here][example].
 
 ## What are we doing?
 
@@ -405,7 +405,7 @@ Engineer/Bachelor Thesis (whatever is the proper name in English).
 [dmodel]: https://github.com/SitePen/dmodel
 [widgetbase]: https://dojotoolkit.org/documentation/tutorials/1.10/understanding_widgetbase/index.html
 
-[example]: http://nazarewk.github.io/dojo-jsx/blog_demo/
+[example]: http://nazarewk.github.io/10c-blog1/demo/
 
 [react]: https://facebook.github.io/react/
 [jetbrains-babel]: http://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/
