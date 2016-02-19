@@ -31,9 +31,6 @@
       </header>
       <section>
         <h1>
-<a id="using-react-instead-of-dijit-with-dojo-toolkit-part-1" class="anchor" href="#using-react-instead-of-dijit-with-dojo-toolkit-part-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using React instead of Dijit with Dojo Toolkit (part 1)</h1>
-
-<h1>
 <a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h1>
 
 <p><img src="http://www.teslamotorsclub.com/attachment.php?attachmentid=47346&amp;d=1397707694" alt="*Yeah, well, that's just like your opinon, man.*"></p>
@@ -223,7 +220,7 @@ otherwise should work fine with ES2015 transpilers,</li>
 </ul>
 
 <h2>
-<a id="indexhtml" class="anchor" href="#indexhtml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>index.html</code>
+<a id="indexhtml" class="anchor" href="#indexhtml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://nazarewk.github.io/10c-blog1/demo/index.html"><code>index.html</code></a>
 </h2>
 
 <p>Dumbed down version of <code>index.html</code>:</p>
@@ -285,7 +282,7 @@ otherwise should work fine with ES2015 transpilers,</li>
 &lt;/<span class="pl-ent">html</span>&gt;</pre></div>
 
 <h2>
-<a id="the-entry-point" class="anchor" href="#the-entry-point" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The entry point</h2>
+<a id="the-entry-point-mainjsx" class="anchor" href="#the-entry-point-mainjsx" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The entry point (<a href="http://nazarewk.github.io/10c-blog1/demo/app/main.jsx"><code>main.jsx</code></a>)</h2>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-en">define</span>([
   <span class="pl-s"><span class="pl-pds">'</span>dojo/dom<span class="pl-pds">'</span></span>,
@@ -316,7 +313,7 @@ otherwise should work fine with ES2015 transpilers,</li>
 <p>Yeah, creating custom Dijit widget <strong>is</strong> cumbersome.</p>
 
 <h3>
-<a id="entrylistjs" class="anchor" href="#entrylistjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>EntryList.js</code>
+<a id="entrylistjs" class="anchor" href="#entrylistjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://nazarewk.github.io/10c-blog1/demo/app/dijit/EntryList.js"><code>EntryList.js</code></a>
 </h3>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-en">define</span>([
@@ -354,9 +351,9 @@ otherwise should work fine with ES2015 transpilers,</li>
       <span class="pl-k">var</span> files <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>\</span>
 <span class="pl-s">        &lt;h2&gt;Files list:&lt;/h2&gt;\</span>
 <span class="pl-s">        &lt;ul&gt; \</span>
-<span class="pl-s">          &lt;li&gt;&lt;a href="app/main.jsx" target="_blank"&gt;app/main.jsx&lt;/a&gt;&lt;/li&gt; \</span>
-<span class="pl-s">          &lt;li&gt;&lt;a href="app/dijit/Entry.js" target="_blank"&gt;app/dijit/Entry.js&lt;/a&gt;&lt;/li&gt; \</span>
-<span class="pl-s">          &lt;li&gt;&lt;a href="app/dijit/EntryList.js" target="_blank"&gt;app/dijit/EntryList.js&lt;/a&gt;&lt;/li&gt; \</span>
+<span class="pl-s">          &lt;li&gt;&lt;a href="app/main.jsx"&gt;app/main.jsx&lt;/a&gt;&lt;/li&gt; \</span>
+<span class="pl-s">          &lt;li&gt;&lt;a href="app/dijit/Entry.js"&gt;app/dijit/Entry.js&lt;/a&gt;&lt;/li&gt; \</span>
+<span class="pl-s">          &lt;li&gt;&lt;a href="app/dijit/EntryList.js"&gt;app/dijit/EntryList.js&lt;/a&gt;&lt;/li&gt; \</span>
 <span class="pl-s">        &lt;/ul&gt;<span class="pl-pds">'</span></span>;
       <span class="pl-smi">domConstruct</span>.<span class="pl-en">place</span>(
         <span class="pl-smi">domConstruct</span>.<span class="pl-en">toDom</span>(files), <span class="pl-c">// contruct DOM from text</span>
@@ -387,7 +384,7 @@ otherwise should work fine with ES2015 transpilers,</li>
 });</pre></div>
 
 <h3>
-<a id="entryjs" class="anchor" href="#entryjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>Entry.js</code>
+<a id="entryjs" class="anchor" href="#entryjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://nazarewk.github.io/10c-blog1/demo/app/dijit/Entry.js"><code>Entry.js</code></a>
 </h3>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-en">define</span>([
@@ -420,7 +417,8 @@ otherwise should work fine with ES2015 transpilers,</li>
 });</pre></div>
 
 <h2>
-<a id="react-code" class="anchor" href="#react-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>React code</h2>
+<a id="reactentryjsx" class="anchor" href="#reactentryjsx" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://nazarewk.github.io/10c-blog1/demo/app/ReactEntryList.jsx"><code>ReactEntry.jsx</code></a>
+</h2>
 
 <p>Yeah exactly, this's all there is:</p>
 
@@ -442,8 +440,8 @@ otherwise should work fine with ES2015 transpilers,</li>
       <span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
       <span class="pl-k">&lt;</span>h2<span class="pl-k">&gt;</span>Files list<span class="pl-k">:</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>h2<span class="pl-k">&gt;</span>
       <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>li<span class="pl-k">&gt;&lt;</span>a href<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app/main.jsx<span class="pl-pds">"</span></span> target<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>_blank<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>app<span class="pl-k">/</span><span class="pl-smi">main</span>.<span class="pl-smi">jsx</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>li<span class="pl-k">&gt;&lt;</span>a href<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app/ReactEntryList.jsx<span class="pl-pds">"</span></span> target<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>_blank<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>app<span class="pl-k">/</span><span class="pl-smi">ReactEntryList</span>.<span class="pl-smi">jsx</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>li<span class="pl-k">&gt;&lt;</span>a href<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app/main.jsx<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>app<span class="pl-k">/</span><span class="pl-smi">main</span>.<span class="pl-smi">jsx</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>li<span class="pl-k">&gt;&lt;</span>a href<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app/ReactEntryList.jsx<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>app<span class="pl-k">/</span><span class="pl-smi">ReactEntryList</span>.<span class="pl-smi">jsx</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
       <span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
     <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
   );
