@@ -243,10 +243,12 @@ define([
     dom.byId('react')
   );
 
-  // Render them with Dijit's custom widget
-  var widget = new dijitEntryList({item: entries});
-  widget.placeAt(dom.byId('dijit'));
-  widget.startup(); // this is crucial
+  // Render them as custom Dijit widget
+  // basically the first argument to _WidgetBase constructor gets mixed into
+  // the widget object inside _WidgetBase.postMixInProperties()
+  new dijitEntryList({
+    item: entries
+  }).placeAt(dom.byId('dijit'));
 });
 ```
 
@@ -305,7 +307,7 @@ define([
     postCreate: function postCreate() {
       // We have to manually create child widgets, then destroy them later
 
-      // It could be located at buildRendering(), but I prefer to build widgets
+      // It could be located at buildRendering(), but i prefer to build widgets
       // in postCreate()
       this.inherited(arguments);
       var that = this;
