@@ -110,7 +110,7 @@ The latter give significantly more immediate fun, but the former give you the
 feeling of hard earned achievement and confidence that once you got the hang
 of it it will *just work*.
 
-DotA taught me enough about the genre (well, there wasn't any genre when i
+DotA taught me enough about the genre (well, there wasn't any genre yet when i
 played it the most) to immediately jump into mid-to-high level LoL/HotS games
 just as Dojo taught me enough about JavaScript internals to easily grasp
 Angular concepts.
