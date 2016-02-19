@@ -57,10 +57,29 @@ I can't stress it enough, **Toolkit** is the keyword here. You can't really
 compare it to `AngularJS` or `Backbone.js` as they are whole frameworks. If you
 really want to compare it to something look at `Underscore.js` or `jQuery`.
 
-Putting it another way comparing Dojo to Angular is like comparing the car
-workshop to the full blown car factory. The former lets you do anything you
-could imagine while the latter lets you do stuff only in the way it was
-designed to, but *a lot* faster.
+Putting it another way comparing Dojo to Angular is like comparing the well
+equipped car workshop to the full blown car factory. The former lets you do
+anything you could imagine while the latter lets you do stuff only in the way
+it was designed to, but *a lot* faster.
+
+### It lets you do whatever you want, however you want...
+
+Dojo makes an art of not being opinionated about anything as opposed to
+Angular which is as opinionated about everything as they get. Start with
+Angular, you can hardly add anything else.
+
+To some (including me) it is Dojo's greatest feature...
+
+### ...but for the most it is Dojo's downfall
+
+Dojo has all the bolts and screws you would need in frontend development and
+still nobody tells you how they fit together. Figuring it out by yourself is
+the hardest and most disgusting part of Dojo.
+
+Actually making a framework on top of Dojo requires so little effort
+that people do it all the time without even realising it. What is missing
+is definitive guide on how it should be used in a real world project or a good
+software architect supervising it.
 
 ## Dojo's structure
 
@@ -79,20 +98,6 @@ release:
 - [`dgrid`][dgrid] - Dojo's grid implementation, call it whatever you want:
     I absolutely love it for displaying tabular data/extending it with whatever
     feature I might dream of,
-
-## It lets you do whatever you want, however you want...
-
-Dojo makes an art of not being opinionated about anything as opposed to
-Angular which is as opinionated about everything as they get. Start with
-Angular, you can hardly add anything else.
-
-To some (including me) it is Dojo's greatest feature...
-
-### ...but for the most it is Dojo's downfall
-
-Dojo has all the bolts and screws you would need in frontend development and
-still nobody tells you how they fit together. Figuring it out by yourself is the
-hardest and most disgusting part of Dojo.
 
 ## Random games comparisons
 
