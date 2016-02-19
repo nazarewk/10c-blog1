@@ -164,7 +164,7 @@ So here we are: displaying list of messages and getting the personalized
     is a `rectangle`, but not the other way around,
 - Dojo's inheritance model is incompatible with JavaScript strict mode, but
     otherwise should work fine with ES2015 transpilers,
-- personally I did not figure out how to circumvent automatic inclusion of
+- Personally I did not figure out how to circumvent automatic inclusion of
     `'use strict';` in Babel for just the Dojo files, so I stick to the ES5,
 
 ## [`index.html`](http://nazarewk.github.io/10c-blog1/demo/index.html)
