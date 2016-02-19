@@ -6,8 +6,8 @@ I love expressing my opinion about everything and then having a healthy
 discussion about it. This article will be no different.
 
 Right now I simply don't have enough knowledge about React and forgot too much
-about Dojo to make it objective analysis of the problem. The objective part
-will come later, after i have tested it in a side project.
+about Dojo to make it objective analysis. This part will come later - after I
+have tested it in a side project.
 
 ## What is the purpose of this article?
 
@@ -313,7 +313,7 @@ define([
     postCreate: function postCreate() {
       // We have to manually create child widgets, then destroy them later
 
-      // It could be located at buildRendering(), but i prefer to build widgets
+      // It could be located at buildRendering(), but I prefer to build widgets
       // in postCreate()
       this.inherited(arguments);
       var that = this;
