@@ -1,0 +1,469 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>10c-blog1 by nazarewk</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">10c-blog1</h1>
+        <p class="header"></p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/nazarewk/10c-blog1/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/nazarewk/10c-blog1/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/nazarewk/10c-blog1">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/nazarewk">nazarewk</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="using-react-instead-of-dijit-with-dojo-toolkit-part-1" class="anchor" href="#using-react-instead-of-dijit-with-dojo-toolkit-part-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using React instead of Dijit with Dojo Toolkit (part 1)</h1>
+
+<h1>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p><img src="http://www.teslamotorsclub.com/attachment.php?attachmentid=47346&amp;d=1397707694" alt="*Yeah, well, that's just like your opinon, man.*"></p>
+
+<p>I love expressing my opinion about everything and then having a healthy
+discussion about it, this article will be no different.</p>
+
+<p>Right now i simply don't have enough knowledge about React and forgot too much
+about Dojo to make it objective analysis of the problem.</p>
+
+<h2>
+<a id="what-is-the-purpose-of-this-article" class="anchor" href="#what-is-the-purpose-of-this-article" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is the purpose of this article?</h2>
+
+<p>At some point i learned that <a href="https://facebook.github.io/react/">React</a> is just the View part of MVC and
+should not obstruct with the M &amp; C. I toyed with the idea of using it
+with/instead of Dijit to make Dojo more accessible to the general public.</p>
+
+<p>Well... the day finally came to put the idea into action.</p>
+
+<p>I have no experience whatsoever with React or modern (2015+) web development
+ideas so today i will stick to explaining pros &amp; cons of Dojo as i know it,
+why would i even want to do such thing as mixing it with React
+and finally share my proof of concept.</p>
+
+<p>I am planning to follow up with my own implementation of <a href="https://github.com/jbranchaud/til">Today i Learned</a>
+idea and share my experiences in future articles.</p>
+
+<p>So far i have managed to make an in-browser <a href="https://github.com/nazarewk/dojo-jsx"><code>.jsx</code> loader</a> for Dojo,
+sadly i came to conclusion it is not very useful outside development.
+You can check the progress <a href="https://github.com/nazarewk/tilapp">here</a>, i abandoned the idea of using above
+mentioned loader for <a href="http://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/">Jetbrains's Babel File Watcher</a> as it
+is way less obtrusive and simpler to set up that any other JSX transpiler.</p>
+
+<h2>
+<a id="who-am-i" class="anchor" href="#who-am-i" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Who am i?</h2>
+
+<p>Currently i am a full stack developer at 10Clouds slowly changing into strictly
+Python developer since nobody wants to use my beloved Dojo. Hopefully this
+<em>series</em> of articles and release of Dojo 2 will change the situation.</p>
+
+<p>I had a pleasure (or misery) of learning Dojo as my first JavaScript library.
+I used it in a side project for almost a year and i definitely liked what i
+found. However it was not a land flowing with milk an honey - it has very high
+learning curve. It is simply not possible to make a quick start guide for it,
+took me 2 weeks to even begin writing my Single Page Application.</p>
+
+<p>In retrospective i think the vast knowledge of ES5 standard i obtained using
+Dojo was well worth the effort.</p>
+
+<h1>
+<a id="what-exactly-is-dojo-toolkit" class="anchor" href="#what-exactly-is-dojo-toolkit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What exactly is <a href="https://dojotoolkit.org/">Dojo Toolkit</a>?</h1>
+
+<p>You may or may not have heard about it before. It is one of the
+<a href="https://en.wikipedia.org/wiki/Dojo_Toolkit#Release_history">oldest</a> JavaScript libraries out there and a pioneer of
+the JavaScript itself as we know it today. It might be getting old and
+is notoriously hard to get started with, but i still think it is one of the best
+written and the most complete JavaScript libraries there are.</p>
+
+<h2>
+<a id="library-not-a-framework" class="anchor" href="#library-not-a-framework" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Library, not a framework</h2>
+
+<p>I can't stress it enough, <strong>Toolkit</strong> is the keyword here. You can't really
+compare it to <code>AngularJS</code> or <code>Backbone.js</code> as they are whole frameworks. If you
+really want to compare it to something look at <code>Underscore.js</code> or <code>jQuery</code>.</p>
+
+<p>Putting it another way comparing Dojo to Angular is like comparing the car
+workshop to the full blown car factory. The former lets you do anything you
+could imagine while the latter lets you do stuff only in the way it was
+designed to, but <em>a lot</em> faster.</p>
+
+<h2>
+<a id="dojos-structure" class="anchor" href="#dojos-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dojo's structure</h2>
+
+<p>Dojo is split into 3 official modules:</p>
+
+<ul>
+<li>
+<code>dojo</code> - core of the library, you can build pretty much anything with it,</li>
+<li>
+<code>dijit</code> - most of the User Interface related code lives here,</li>
+<li>
+<code>dojox</code> - community contributions not deemed stable enough to be pulled into
+<code>dijit</code> or <code>dojo</code>, still it is very useful,</li>
+</ul>
+
+<p>I also know of 3 <em>future</em> modules which will be incorporated into Dojo 2
+release:</p>
+
+<ul>
+<li>
+<a href="http://dstorejs.io/"><code>dstore</code></a> - replaces <code>dojo/store</code>,
+the Data Storage implementation of Dojo,</li>
+<li>
+<a href="https://github.com/SitePen/dmodel"><code>dmodel</code></a> - originally part of <code>dstore</code>,
+the Data Modelling part of Dojo,</li>
+<li>
+<a href="http://dgrid.io/"><code>dgrid</code></a> - Dojo's grid implementation, call it whatever you want:
+i absolutely love it for displaying tabular data/extending it with whatever
+feature i might dream of,</li>
+</ul>
+
+<h2>
+<a id="it-lets-you-do-whatever-you-want-however-you-want" class="anchor" href="#it-lets-you-do-whatever-you-want-however-you-want" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>It lets you do whatever you want, however you want...</h2>
+
+<p>Dojo makes an art of not being opinionated about anything as opposed to
+Angular which is as opinionated about everything as they get. Start with
+Angular, you can hardly add anything else.</p>
+
+<p>To some (including me) it is Dojo's greatest feature...</p>
+
+<h3>
+<a id="but-for-the-most-it-is-dojos-downfall" class="anchor" href="#but-for-the-most-it-is-dojos-downfall" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>...but for the most it is Dojo's downfall</h3>
+
+<p>Dojo has all the bolts and screws you would need in frontend development and
+still nobody tells you how they fit together. Figuring it out by yourself is the
+hardest and most disgusting part of Dojo.</p>
+
+<h2>
+<a id="random-games-comparisons" class="anchor" href="#random-games-comparisons" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random games comparisons</h2>
+
+<p>Dojo is to Angular what:</p>
+
+<ul>
+<li>
+<a href="http://blog.dota2.com/?l=english">Defense of the Ancients</a> is to <a href="http://leagueoflegends.com">League of Legends</a>,</li>
+<li>Counter Strike is to Quake/Team Fortress 2,</li>
+<li>Call of Duty/Battlefield to Quake/Team Fortress 2,</li>
+<li>Starcraft is to Warcraft 3,</li>
+</ul>
+
+<p>Obviously the latter are more fun and easy to work with, but the former give you
+the power, the feeling of hard earned achievement and confidence that once you
+got the hang of it it will <em>simply work</em>.</p>
+
+<h2>
+<a id="dojo-2" class="anchor" href="#dojo-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dojo 2</h2>
+
+<p>In recent years it started falling behind the frantically developing JavaScript
+world pending a full rewrite in form of <a href="https://dojotoolkit.org/community/roadmap/">Dojo 2</a>. I had a pleasure to use
+some of the new modules (<a href="http://dstorejs.io/"><code>dstore</code></a> and <a href="http://dgrid.io/"><code>dgrid</code></a>) in their
+infancy and i sincerely hope that the rewrite will give it entirely new life.</p>
+
+<h1>
+<a id="why-react" class="anchor" href="#why-react" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why React?</h1>
+
+<p>Some people love Dijit, i am not one of them. While stock implementation is
+a lot closer to Angular in terms of opinionation and ease of use, the Dijit's
+core <a href="https://dojotoolkit.org/documentation/tutorials/1.10/understanding_widgetbase/index.html"><code>_WidgetBase</code></a> is way more complicated to use than it should
+be. It's kind of like Java: well defined and structured, but requires a lot of
+boilerplate code.</p>
+
+<p>Basically Dijit lacks easy to use templating system while it is React's JSX's
+greatest feature. Simple as that.</p>
+
+<h1>
+<a id="proof-of-concept" class="anchor" href="#proof-of-concept" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proof of concept</h1>
+
+<p>Great, you are still here. So let's get to the proof of concept example.
+You can see the fully working comparison of React vs Dijit <a href="http://nazarewk.github.io/dojo-jsx/blog_demo/">here</a>.</p>
+
+<h2>
+<a id="what-are-we-doing" class="anchor" href="#what-are-we-doing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What are we doing?</h2>
+
+<p>I tried something more ambitious, but my lack of knowledge of React told me</p>
+
+<p><img src="http://i.stack.imgur.com/2BvbQ.jpg" alt="You shall not pass!"></p>
+
+<p>So here we are: displaying unordered list of titles and getting the personalized
+<code>alert()</code> upon clicking them.</p>
+
+<p>As i mentioned earlier, i used PyCharm's File Watcher to convert <code>.jsx</code> to <code>ES5</code>
+using Babel serving it with <code>gulp-serve</code>, that's all the setup i needed.</p>
+
+<h2>
+<a id="issues-and-insights-worth-mentioning" class="anchor" href="#issues-and-insights-worth-mentioning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Issues and insights worth mentioning</h2>
+
+<ul>
+<li>
+<a href="https://medium.com/@brianleroux/es6-modules-amd-and-commonjs-c1acefbe6fc0#.ic17udaoc"><code>AMD</code></a> is subset of Dojo's AMD implementation, Dojo had them
+long before it became standard and has extra loaders that didn't make it
+into the final standard, so it is kind of like a <code>square</code> is a <code>rectangle</code>,
+but not the other way around,</li>
+<li>Dojo's inheritance model is incompatible with JavaScript strict mode, but
+otherwise should work fine with ES2015 transpilers,</li>
+<li>personally i did not figure out how to circumvent automatic inclusion of
+<code>'use strict';</code> in Babel for just the Dojo files, so i stick to the ES5,</li>
+</ul>
+
+<h2>
+<a id="indexhtml" class="anchor" href="#indexhtml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>index.html</code>
+</h2>
+
+<p>Dumbed down version of <code>index.html</code>:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">html</span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+    <span class="pl-c">&lt;!-- head boilerplate code, including pure.css and some basic styling --&gt;</span>
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
+<span class="pl-c">&lt;!-- We'll use Pure's 50-50 vertical grid --&gt;</span>
+&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pure-g<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pure-u-1-2<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>react<span class="pl-pds">"</span></span>&gt;
+        <span class="pl-c">&lt;!-- We'll inject react code here --&gt;</span>
+    &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pure-u-1-2<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>dijit<span class="pl-pds">"</span></span>&gt;
+        <span class="pl-c">&lt;!-- We'll inject dijit widget here --&gt;</span>
+    &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;
+<span class="pl-s1">&lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    <span class="pl-c">/*</span></span>
+<span class="pl-s1"><span class="pl-c">        We need to kickstart the dojo with specific configuration,</span></span>
+<span class="pl-s1"><span class="pl-c">        you can find more info here:</span></span>
+<span class="pl-s1"><span class="pl-c">        https://dojotoolkit.org/documentation/tutorials/1.10/hello_dojo/index.html</span></span>
+<span class="pl-s1"><span class="pl-c">        https://dojotoolkit.org/documentation/tutorials/1.10/dojo_config/index.html</span></span>
+<span class="pl-s1"><span class="pl-c">     */</span></span>
+<span class="pl-s1">    <span class="pl-k">var</span> dojoConfig <span class="pl-k">=</span> {</span>
+<span class="pl-s1">        async<span class="pl-k">:</span> <span class="pl-c1">true</span>,</span>
+<span class="pl-s1">        baseUrl<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">        packages<span class="pl-k">:</span> [{</span>
+<span class="pl-s1">            name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>dojo<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            location<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">            <span class="pl-c">// point `dojo` package to google CDN</span></span>
+<span class="pl-s1">        }, {</span>
+<span class="pl-s1">            name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>dijit<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            location<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">            <span class="pl-c">// point `dijit` package to google CDN</span></span>
+<span class="pl-s1">        }, {</span>
+<span class="pl-s1">            name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            location<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        }],</span>
+<span class="pl-s1">        <span class="pl-c">/*</span></span>
+<span class="pl-s1"><span class="pl-c">        Kickstart the app with `app/main` module right after dojo loads using</span></span>
+<span class="pl-s1"><span class="pl-c">        `deps`</span></span>
+<span class="pl-s1"><span class="pl-c">        */</span></span>
+<span class="pl-s1">        deps<span class="pl-k">:</span> [</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>app/main<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ]</span>
+<span class="pl-s1">    };</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-c">&lt;!--</span>
+<span class="pl-c">React and ReactDOM variables are required for transpiled JSX to work</span>
+<span class="pl-c">we can either include react globally or require it in every single AMD module</span>
+<span class="pl-c">Obviously the former is easier to use</span>
+<span class="pl-c">--&gt;</span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>//fb.me/react-0.14.7.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>//fb.me/react-dom-0.14.7.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js<span class="pl-pds">"</span></span> <span class="pl-e">defer</span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<h2>
+<a id="the-entry-point" class="anchor" href="#the-entry-point" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The entry point</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">define</span>([
+  <span class="pl-s"><span class="pl-pds">'</span>dojo/dom<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>./ReactEntryList<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>./dijit/EntryList<span class="pl-pds">'</span></span>
+], (<span class="pl-smi">dom</span>, <span class="pl-smi">ReactEntryList</span>, <span class="pl-smi">dijitEntryList</span>) <span class="pl-k">=&gt;</span> {
+  <span class="pl-c">// Generate 5 entries</span>
+  <span class="pl-k">let</span> entries <span class="pl-k">=</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>].<span class="pl-en">map</span>((<span class="pl-smi">i</span>) <span class="pl-k">=&gt;</span> ({
+    title<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">`</span>Title <span class="pl-s1"><span class="pl-pse">${</span>i<span class="pl-pse">}</span></span><span class="pl-pds">`</span></span>,
+    onClick<span class="pl-k">:</span> () <span class="pl-k">=&gt;</span> <span class="pl-en">alert</span>(<span class="pl-s"><span class="pl-pds">`</span>Message <span class="pl-s1"><span class="pl-pse">${</span>i<span class="pl-pse">}</span></span><span class="pl-pds">`</span></span>)
+  }));
+
+  <span class="pl-c">// Render them with React</span>
+  <span class="pl-smi">ReactDOM</span>.<span class="pl-en">render</span>(
+    <span class="pl-k">&lt;</span>ReactEntryList entries<span class="pl-k">=</span>{entries}<span class="pl-k">/</span><span class="pl-k">&gt;</span>,
+    <span class="pl-smi">dom</span>.<span class="pl-en">byId</span>(<span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>)
+  );
+
+  <span class="pl-c">// Render them with Dijit's custom widget</span>
+  <span class="pl-k">var</span> widget <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">dijitEntryList</span>({item<span class="pl-k">:</span> entries});
+  <span class="pl-smi">widget</span>.<span class="pl-en">placeAt</span>(<span class="pl-smi">dom</span>.<span class="pl-en">byId</span>(<span class="pl-s"><span class="pl-pds">'</span>dijit<span class="pl-pds">'</span></span>));
+  <span class="pl-smi">widget</span>.<span class="pl-en">startup</span>(); <span class="pl-c">// this is crucial</span>
+});</pre></div>
+
+<h2>
+<a id="custom-dijit-widget-code" class="anchor" href="#custom-dijit-widget-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom Dijit widget code:</h2>
+
+<p>Yeah, creating custom Dijit widget <strong>is</strong> cumbersome.</p>
+
+<h3>
+<a id="entrylistjs" class="anchor" href="#entrylistjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>EntryList.js</code>
+</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">define</span>([
+  <span class="pl-s"><span class="pl-pds">'</span>dojo/_base/declare<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>dijit/_WidgetBase<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>dojo/dom-construct<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>dojo/on<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>./Entry<span class="pl-pds">'</span></span>
+], <span class="pl-k">function</span> (<span class="pl-smi">declare</span>, <span class="pl-smi">_WidgetBase</span>, <span class="pl-smi">domConstruct</span>, <span class="pl-smi">on</span>, <span class="pl-smi">Entry</span>) {
+  <span class="pl-k">return</span> <span class="pl-en">declare</span>([_WidgetBase], {
+    <span class="pl-en">constructor</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">constructor</span>() {
+      <span class="pl-v">this</span>.<span class="pl-en">inherited</span>(arguments);
+      <span class="pl-c">// Instantiate the variable inside constructor, because it is</span>
+      <span class="pl-c">// object-specific, not class-specific</span>
+      <span class="pl-v">this</span>.<span class="pl-smi">entries</span> <span class="pl-k">=</span> [];
+    },
+
+    <span class="pl-en">buildRendering</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">buildRendering</span>() {
+      <span class="pl-c">// This is where the DOM tree is built in dijit</span>
+
+      <span class="pl-c">// this.domNode is a &lt;div&gt; created higher in inheritance hierarchy</span>
+      <span class="pl-v">this</span>.<span class="pl-en">inherited</span>(arguments);
+
+      <span class="pl-c">// Build the preface the proper dojo's domConstruct way</span>
+      <span class="pl-smi">domConstruct</span>.<span class="pl-en">create</span>(<span class="pl-s"><span class="pl-pds">'</span>h1<span class="pl-pds">'</span></span>, {
+        innerHTML<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Dojo + Dijit version<span class="pl-pds">'</span></span>
+      }, <span class="pl-v">this</span>.<span class="pl-smi">domNode</span>);
+      <span class="pl-smi">domConstruct</span>.<span class="pl-en">create</span>(<span class="pl-s"><span class="pl-pds">'</span>p<span class="pl-pds">'</span></span>, {
+        innerHTML<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Click to display alert<span class="pl-pds">'</span></span>
+      }, <span class="pl-v">this</span>.<span class="pl-smi">domNode</span>);
+
+      <span class="pl-v">this</span>.<span class="pl-smi">listNode</span> <span class="pl-k">=</span> <span class="pl-smi">domConstruct</span>.<span class="pl-en">create</span>(<span class="pl-s"><span class="pl-pds">'</span>ul<span class="pl-pds">'</span></span>, {}, <span class="pl-v">this</span>.<span class="pl-smi">domNode</span>);
+
+      <span class="pl-c">// Build the files list from HTML text</span>
+      <span class="pl-k">var</span> files <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>\</span>
+<span class="pl-s">        &lt;h2&gt;Files list:&lt;/h2&gt;\</span>
+<span class="pl-s">        &lt;ul&gt; \</span>
+<span class="pl-s">          &lt;li&gt;&lt;a href="app/main.jsx" target="_blank"&gt;app/main.jsx&lt;/a&gt;&lt;/li&gt; \</span>
+<span class="pl-s">          &lt;li&gt;&lt;a href="app/dijit/Entry.js" target="_blank"&gt;app/dijit/Entry.js&lt;/a&gt;&lt;/li&gt; \</span>
+<span class="pl-s">          &lt;li&gt;&lt;a href="app/dijit/EntryList.js" target="_blank"&gt;app/dijit/EntryList.js&lt;/a&gt;&lt;/li&gt; \</span>
+<span class="pl-s">        &lt;/ul&gt;<span class="pl-pds">'</span></span>;
+      <span class="pl-smi">domConstruct</span>.<span class="pl-en">place</span>(
+        <span class="pl-smi">domConstruct</span>.<span class="pl-en">toDom</span>(files), <span class="pl-c">// contruct DOM from text</span>
+        <span class="pl-v">this</span>.<span class="pl-smi">domNode</span>
+      );
+    },
+
+    <span class="pl-en">postCreate</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">postCreate</span>() {
+      <span class="pl-c">// We have to manually create child widgets, then destroy them later</span>
+
+      <span class="pl-c">// It could be located at buildRendering(), but i prefer to build widgets</span>
+      <span class="pl-c">// in postCreate()</span>
+      <span class="pl-v">this</span>.<span class="pl-en">inherited</span>(arguments);
+      <span class="pl-k">var</span> that <span class="pl-k">=</span> <span class="pl-v">this</span>;
+      <span class="pl-smi">that</span>.<span class="pl-smi">entries</span> <span class="pl-k">=</span> <span class="pl-smi">that</span>.<span class="pl-smi">item</span>.<span class="pl-en">map</span>(<span class="pl-k">function</span> (<span class="pl-smi">entry</span>) {
+        <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-en">Entry</span>({item<span class="pl-k">:</span> entry}).<span class="pl-en">placeAt</span>(<span class="pl-smi">that</span>.<span class="pl-smi">listNode</span>);
+      });
+    },
+
+    <span class="pl-en">destroy</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">destroy</span>() {
+      <span class="pl-c">// We have to manually destroy child widgets to avoid memory leaks</span>
+      <span class="pl-v">this</span>.<span class="pl-en">inherited</span>(arguments);
+      <span class="pl-v">this</span>.<span class="pl-smi">entries</span>.<span class="pl-en">forEach</span>(<span class="pl-k">function</span> (<span class="pl-smi">entry</span>) {
+        <span class="pl-smi">entry</span>.<span class="pl-en">destroy</span>();
+      })
+    }
+  });
+});</pre></div>
+
+<h3>
+<a id="entryjs" class="anchor" href="#entryjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>Entry.js</code>
+</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">define</span>([
+  <span class="pl-s"><span class="pl-pds">'</span>dojo/_base/declare<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>dijit/_WidgetBase<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>dojo/dom-construct<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>dojo/on<span class="pl-pds">'</span></span>
+], <span class="pl-k">function</span> (<span class="pl-smi">declare</span>, <span class="pl-smi">_WidgetBase</span>, <span class="pl-smi">domConstruct</span>, <span class="pl-smi">on</span>) {
+  <span class="pl-k">return</span> <span class="pl-en">declare</span>([_WidgetBase], {
+
+    <span class="pl-en">buildRendering</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">buildRendering</span>() {
+      <span class="pl-c">// Normally this.domNode is a div created in super() call</span>
+      <span class="pl-c">// this.inherited(arguments) in dojo's inheritance model</span>
+      <span class="pl-c">// we'll skip it and create &lt;li&gt; instead</span>
+      <span class="pl-v">this</span>.<span class="pl-smi">domNode</span> <span class="pl-k">=</span> <span class="pl-smi">domConstruct</span>.<span class="pl-en">create</span>(<span class="pl-s"><span class="pl-pds">'</span>li<span class="pl-pds">'</span></span>, {
+        innerHTML<span class="pl-k">:</span> <span class="pl-v">this</span>.<span class="pl-smi">item</span>.<span class="pl-c1">title</span>
+      });
+    },
+
+    <span class="pl-en">postCreate</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">postCreate</span>() {
+      <span class="pl-v">this</span>.<span class="pl-en">inherited</span>(arguments);
+      <span class="pl-v">this</span>.<span class="pl-smi">signal</span> <span class="pl-k">=</span> <span class="pl-en">on</span>(<span class="pl-v">this</span>.<span class="pl-smi">domNode</span>, <span class="pl-s"><span class="pl-pds">'</span>click<span class="pl-pds">'</span></span>, <span class="pl-v">this</span>.<span class="pl-smi">item</span>.<span class="pl-smi">onClick</span>);
+    },
+
+    <span class="pl-en">destroy</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">destroy</span>() {
+      <span class="pl-v">this</span>.<span class="pl-smi">signal</span>.<span class="pl-en">remove</span>();
+      <span class="pl-v">this</span>.<span class="pl-en">inherited</span>(arguments);
+    }
+  });
+});</pre></div>
+
+<h2>
+<a id="react-code" class="anchor" href="#react-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>React code</h2>
+
+<p>Yeah exactly, this's all there is:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">define</span>([], () <span class="pl-k">=&gt;</span> {
+  <span class="pl-k">const</span> <span class="pl-c1">Entry</span> <span class="pl-k">=</span> ({<span class="pl-smi">entry</span>}) <span class="pl-k">=&gt;</span> (
+    <span class="pl-k">&lt;</span>li onClick<span class="pl-k">=</span>{<span class="pl-smi">entry</span>.<span class="pl-smi">onClick</span>}<span class="pl-k">&gt;</span>
+      {<span class="pl-smi">entry</span>.<span class="pl-c1">title</span>}
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+  );
+
+  <span class="pl-k">return</span> (<span class="pl-smi">props</span>) <span class="pl-k">=&gt;</span> (
+    <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>h1<span class="pl-k">&gt;</span>Dojo <span class="pl-k">+</span> React version<span class="pl-k">&lt;</span><span class="pl-k">/</span>h1<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>p<span class="pl-k">&gt;</span>Click to display alert<span class="pl-k">&lt;</span><span class="pl-k">/</span>p<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>
+        {<span class="pl-smi">props</span>.<span class="pl-smi">entries</span>.<span class="pl-en">map</span>((<span class="pl-smi">entry</span>, <span class="pl-smi">i</span>) <span class="pl-k">=&gt;</span> (
+          <span class="pl-k">&lt;</span>Entry entry<span class="pl-k">=</span>{entry} key<span class="pl-k">=</span>{i}<span class="pl-k">/</span><span class="pl-k">&gt;</span>
+        ))}
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>h2<span class="pl-k">&gt;</span>Files list<span class="pl-k">:</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>h2<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>li<span class="pl-k">&gt;&lt;</span>a href<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app/main.jsx<span class="pl-pds">"</span></span> target<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>_blank<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>app<span class="pl-k">/</span><span class="pl-smi">main</span>.<span class="pl-smi">jsx</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>li<span class="pl-k">&gt;&lt;</span>a href<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app/ReactEntryList.jsx<span class="pl-pds">"</span></span> target<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>_blank<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>app<span class="pl-k">/</span><span class="pl-smi">ReactEntryList</span>.<span class="pl-smi">jsx</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+  );
+});</pre></div>
+
+<h1>
+<a id="conclusions" class="anchor" href="#conclusions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Conclusions</h1>
+
+<p>I am not sure how it will work out in my <a href="https://github.com/nazarewk/tilapp">Today i Learned app</a>, but
+for now using React instead of custom Dijit looks very promising in solving
+the problem of Dojo being too complicated for the average mortal.</p>
+
+<p>Hopefully i will keep you posted in the follow-ups and possibly my
+Engineer/Bachelor Thesis (whatever is the proper name in English).</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
